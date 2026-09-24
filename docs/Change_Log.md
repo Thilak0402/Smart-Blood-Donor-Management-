@@ -1,660 +1,679 @@
 CHANGE LOG
 Smart Blood Donor Management System
+Software Configuration Management Project
 
+============================================================
 1. DOCUMENT INFORMATION
+============================================================
 
 Project Name:
 Smart Blood Donor Management System
 
-Document Name:
-Change Log
+Project Type:
+Software Configuration Management (SCM) Project
+
+Technology:
+React, Vite, Node.js, Express.js, MongoDB, Mongoose
 
 Version:
-1.0
+1.0.0 - Development Baseline
 
-Status:
-Active
+Branch:
+development
 
 Repository:
 smart-blood-donor-management
 
-Development Branch:
-development
-
-Configuration Management Tool:
-Git and GitHub
-
-
+============================================================
 2. PURPOSE
+============================================================
 
-This Change Log records the major changes, enhancements, fixes, documentation updates, and configuration changes made during the development of the Smart Blood Donor Management System.
+This Change Log records the major changes, enhancements,
+documentation updates, configuration changes, and SCM
+activities performed during the development of the Smart
+Blood Donor Management System.
 
-The document supports Software Configuration Management (SCM) by providing a traceable history of project changes.
+The Change Log provides traceability between project
+requirements, implementation activities, documentation,
+and Git/GitHub configuration management activities.
 
-Each major change is associated with a development activity, configuration item, commit, issue, or project milestone wherever applicable.
-
-
-3. CHANGE LOG FORMAT
-
-Each change entry contains:
-
-- Change ID
-- Date/Period
-- Change Description
-- Configuration Item
-- Change Type
-- Status
-- SCM Reference
-
-
-4. CHANGE HISTORY
+============================================================
+3. CHANGE HISTORY
+============================================================
 
 CHG-001
-Date/Period: Project Initialization
-Change Description:
-Created the Smart Blood Donor Management System project structure with separate frontend, backend, and documentation directories.
+Date: Initial Project Setup
+Category: Project Initialization
+Description:
+Created the Smart Blood Donor Management System project
+structure with separate frontend, backend, and documentation
+directories.
 
-Configuration Item:
-Project Structure
+Files/Components:
+- frontend/
+- backend/
+- docs/
+- README.md
 
-Change Type:
-Initial Setup
+SCM Activity:
+Initialized Git repository and connected the project to
+GitHub.
 
 Status:
 Completed
-
-SCM Reference:
-Git repository initialization
 
 
 CHG-002
-Date/Period: Project Initialization
-Change Description:
-Initialized the React frontend using Vite and configured the basic frontend development environment.
+Date: Initial Frontend Development
+Category: Frontend
+Description:
+Created the React/Vite frontend application and developed
+the initial SmartBlood homepage.
 
-Configuration Item:
-Frontend
+Major Features:
+- SmartBlood navigation
+- Home page
+- Find Donors section
+- Blood Stock section
+- Request Blood section
+- Login navigation
+- Donor registration navigation
+- Emergency donor section
+- Footer
 
-Change Type:
-New Feature / Setup
+SCM Activity:
+Frontend changes committed and pushed to GitHub.
 
 Status:
 Completed
-
-SCM Reference:
-Git repository
 
 
 CHG-003
-Date/Period: Project Initialization
-Change Description:
-Created the Express.js backend and configured Node.js dependencies required for server development.
+Date: Donor Registration
+Category: Feature Development
+Description:
+Implemented donor registration functionality.
 
-Configuration Item:
-Backend
+Features:
+- Full name
+- Email
+- Phone number
+- Date of birth
+- Gender
+- Blood group
+- City
+- Address
+- Last donation date
+- Password
 
-Change Type:
-New Feature / Setup
+Backend:
+Created donor model and registration API.
+
+Security:
+Passwords are hashed using bcryptjs before storage.
 
 Status:
 Completed
-
-SCM Reference:
-Git repository
 
 
 CHG-004
-Date/Period: Development Phase
-Change Description:
-Designed and implemented the SmartBlood homepage with navigation, hero section, blood stock information, emergency section, and project information.
+Date: MongoDB Integration
+Category: Database
+Description:
+Integrated MongoDB Atlas with the backend application.
 
-Configuration Item:
-frontend/src/App.jsx
-frontend/src/App.css
+Major Activities:
+- Created SmartBloodDB database deployment
+- Configured database user
+- Configured IP access
+- Added MongoDB connection string to .env
+- Connected backend using Mongoose
 
-Change Type:
-UI Enhancement
+SCM Security:
+.env is excluded from Git using .gitignore.
 
 Status:
 Completed
-
-SCM Reference:
-Git commit history
 
 
 CHG-005
-Date/Period: Development Phase
-Change Description:
-Implemented donor registration functionality with fields for personal details, blood group, contact information, address, last donation date, and password.
+Date: Donor Authentication
+Category: Security / Authentication
+Description:
+Implemented donor login functionality.
 
-Configuration Item:
-Donor Registration Module
+Features:
+- Email and password login
+- Password verification using bcryptjs
+- Invalid login handling
+- Donor information returned after successful login
 
-Change Type:
-New Feature
+API:
+POST /api/auth/login
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #1
 
 
 CHG-006
-Date/Period: Development Phase
-Change Description:
-Created the MongoDB donor data model using Mongoose.
+Date: Donor Dashboard
+Category: Feature Development
+Description:
+Implemented donor dashboard functionality.
 
-Configuration Item:
-backend/models/Donor.js
+Features:
+- Display donor name
+- Display donor email
+- Display blood group
+- Display city
+- Quick navigation
+- Logout functionality
 
-Change Type:
-Database Configuration
+Authentication State:
+Donor information is stored in browser localStorage.
 
 Status:
 Completed
-
-SCM Reference:
-Git repository
 
 
 CHG-007
-Date/Period: Development Phase
-Change Description:
-Implemented donor registration API and connected the frontend registration form to the backend.
+Date: React Routing
+Category: Frontend Architecture
+Description:
+Integrated React Router into the frontend.
 
-Configuration Item:
-backend/routes/donorRoutes.js
-
-Change Type:
-New Feature
+Routes:
+- /
+- /register
+- /login
+- /blood-stock
+- /request-blood
+- /find-donors
+- /dashboard
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #1
 
 
 CHG-008
-Date/Period: Development Phase
-Change Description:
-Added password hashing using bcryptjs to improve password storage security.
+Date: Blood Stock Management
+Category: Feature Development
+Description:
+Implemented blood stock management.
 
-Configuration Item:
-Donor Authentication
+Features:
+- View available blood groups
+- Display units available
+- Update blood stock
+- Refresh stock after update
+- Support for all eight blood groups
 
-Change Type:
-Security Enhancement
+Supported Blood Groups:
+A+, A-, B+, B-, AB+, AB-, O+, O-
+
+API:
+GET /api/blood-stock
+POST /api/blood-stock
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #1
 
 
 CHG-009
-Date/Period: Development Phase
-Change Description:
-Implemented donor login functionality with email and password validation.
+Date: Blood Request Management
+Category: Feature Development
+Description:
+Implemented blood request functionality.
 
-Configuration Item:
-backend/routes/authRoutes.js
-frontend/src/pages/Login.jsx
+Request Information:
+- Patient name
+- Phone number
+- Blood group
+- Units required
+- Hospital
+- City
+- Urgency
+- Request status
 
-Change Type:
-New Feature
+API:
+POST /api/blood-requests
+GET /api/blood-requests
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #1
 
 
 CHG-010
-Date/Period: Development Phase
-Change Description:
-Implemented donor dashboard functionality and local login-session handling using localStorage.
+Date: Donor Search
+Category: Feature Development
+Description:
+Implemented donor search functionality.
 
-Configuration Item:
-Donor Dashboard
+Search Criteria:
+- Blood group
+- City
 
-Change Type:
-New Feature
+API:
+GET /api/donors
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #1
 
 
 CHG-011
-Date/Period: Development Phase
-Change Description:
-Added React Router and configured routes for Home, Donor Registration, Login, Blood Stock, Blood Request, Find Donors, and Dashboard.
+Date: Development Branch
+Category: SCM
+Description:
+Created the development branch for controlled feature
+development.
 
-Configuration Item:
-Frontend Routing
+Branch:
+development
 
-Change Type:
-Configuration
+SCM Activity:
+Development branch pushed to GitHub and used for subsequent
+project changes.
 
 Status:
 Completed
-
-SCM Reference:
-Git repository
 
 
 CHG-012
-Date/Period: Development Phase
-Change Description:
-Implemented blood stock management using MongoDB and REST APIs.
+Date: GitHub Issues
+Category: SCM
+Description:
+Created GitHub Issues to track project requirements and
+development activities.
 
-Configuration Item:
-Blood Stock Module
-
-Change Type:
-New Feature
+Issues Created:
+- Issue #1 - Implement secure donor authentication
+- Issue #2 - Implement blood stock management
+- Issue #3 - Implement blood request management
+- Issue #4 - Implement donor search
+- Issue #5 - Create SCM project documentation
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #2
 
 
 CHG-013
-Date/Period: Development Phase
-Change Description:
-Added blood stock records for all eight blood groups and implemented frontend display and update functionality.
+Date: GitHub Project Board
+Category: SCM
+Description:
+Created a GitHub Project board for managing project tasks.
 
-Configuration Item:
-Blood Stock Module
+Project Board:
+Smart Blood Donor Management - SCM
 
-Change Type:
-Data / UI Enhancement
+Columns:
+- To Do
+- In Progress
+- Done
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #2
 
 
 CHG-014
-Date/Period: Development Phase
-Change Description:
-Implemented blood request management with patient information, blood group, required units, hospital, city, urgency, and request status.
+Date: Configuration Management Plan
+Category: Documentation
+Description:
+Created the Configuration Management Plan describing the
+SCM process, repository structure, branching strategy,
+configuration control, version management, status accounting,
+auditing, security, and release management.
 
-Configuration Item:
-Blood Request Module
-
-Change Type:
-New Feature
+File:
+docs/Configuration_Management_Plan.md
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #3
 
 
 CHG-015
-Date/Period: Development Phase
-Change Description:
-Created blood request database model and REST API endpoints for creating and retrieving blood requests.
+Date: Software Requirements Specification
+Category: Documentation
+Description:
+Created the Software Requirements Specification documenting
+the system purpose, scope, users, functional requirements,
+non-functional requirements, database requirements, API
+requirements, security requirements, and acceptance criteria.
 
-Configuration Item:
-backend/models/BloodRequest.js
-backend/routes/bloodRequestRoutes.js
-
-Change Type:
-Database / API Enhancement
+File:
+docs/Software_Requirements_Specification.md
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #3
 
 
 CHG-016
-Date/Period: Development Phase
-Change Description:
-Implemented donor search based on blood group and optional city filtering.
+Date: System Architecture
+Category: Documentation
+Description:
+Created the System Architecture document describing the
+frontend, backend, API, database, authentication, data flow,
+deployment, and SCM architecture.
 
-Configuration Item:
-Find Donors Module
-
-Change Type:
-New Feature
+File:
+docs/System_Architecture.md
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #4
 
 
 CHG-017
-Date/Period: Development Phase
-Change Description:
-Added API endpoint for retrieving compatible donors using blood group and city filters.
+Date: API Documentation
+Category: Documentation
+Description:
+Created API documentation for the major backend endpoints.
 
-Configuration Item:
-backend/routes/donorRoutes.js
+Documented APIs:
+- Donor registration
+- Donor login
+- Donor search
+- Blood stock
+- Blood requests
 
-Change Type:
-API Enhancement
+File:
+docs/API_Documentation.md
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #4
 
 
 CHG-018
-Date/Period: Development Phase
-Change Description:
-Connected the backend to MongoDB Atlas and configured environment variables using the .env file.
+Date: Test Plan
+Category: Testing Documentation
+Description:
+Created the Test Plan covering unit testing, integration
+testing, functional testing, API testing, UI testing,
+database testing, regression testing, validation, security,
+defect management, and test completion criteria.
 
-Configuration Item:
-Database Configuration
-
-Change Type:
-Environment Configuration
+File:
+docs/Test_Plan.md
 
 Status:
 Completed
-
-SCM Reference:
-MongoDB Atlas / .env
 
 
 CHG-019
-Date/Period: SCM Implementation
-Change Description:
-Created the development branch to separate ongoing development work from the main branch.
+Date: Authentication and Login UI Enhancement
+Category: User Interface
+Description:
+Improved the Donor Login page layout.
 
-Configuration Item:
-Git Branch Strategy
+Enhancements:
+- Added centered login card
+- Added blood drop icon
+- Improved spacing
+- Improved form alignment
+- Improved input styling
+- Improved login button styling
+- Added responsive layout
+- Added Back to Home navigation
 
-Change Type:
-SCM Configuration
+Files:
+- frontend/src/pages/Login.jsx
+- frontend/src/pages/Login.css
 
 Status:
 Completed
-
-SCM Reference:
-Git branch: development
 
 
 CHG-020
-Date/Period: SCM Implementation
-Change Description:
-Created GitHub Issue #1 for secure donor authentication implementation.
+Date: Donor Registration UI Enhancement
+Category: User Interface
+Description:
+Improved the Donor Registration page layout.
 
-Configuration Item:
-GitHub Issues
+Enhancements:
+- Added centered registration card
+- Improved field alignment
+- Added consistent spacing
+- Improved labels and inputs
+- Improved dropdown styling
+- Improved address field
+- Improved password field
+- Added responsive layout
+- Added Login navigation
 
-Change Type:
-SCM Tracking
+Files:
+- frontend/src/pages/DonorRegistration.jsx
+- frontend/src/pages/DonorRegistration.css
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issue #1
 
 
 CHG-021
-Date/Period: SCM Implementation
-Change Description:
-Created GitHub Issues #2 to #5 for blood stock management, blood request management, donor search, and project documentation.
+Date: Blood Stock UI Enhancement
+Category: User Interface
+Description:
+Improved the Blood Stock Management page.
 
-Configuration Item:
-GitHub Issues
+Enhancements:
+- Added blood stock header
+- Added blood icon
+- Added structured update stock section
+- Improved input alignment
+- Improved update button
+- Added blood group cards
+- Added stock availability indicators
+- Added low stock indicator
+- Added out-of-stock indicator
+- Improved responsive layout
 
-Change Type:
-SCM Tracking
+Files:
+- frontend/src/pages/BloodStock.jsx
+- frontend/src/pages/BloodStock.css
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Issues #2-#5
 
 
 CHG-022
-Date/Period: SCM Implementation
-Change Description:
-Created a GitHub Project board named Smart Blood Donor Management - SCM with To Do, In Progress, and Done columns.
+Date: Login Navigation Enhancement
+Category: Navigation
+Description:
+Added a Back to Home option to the Donor Login page so
+users can return to the SmartBlood homepage without logging in.
 
-Configuration Item:
-GitHub Projects
-
-Change Type:
-SCM Configuration
+File:
+frontend/src/pages/Login.jsx
 
 Status:
 Completed
-
-SCM Reference:
-GitHub Project Board
 
 
 CHG-023
-Date/Period: SCM Documentation
-Change Description:
-Created the Configuration Management Plan documenting the SCM strategy, repository structure, branching, configuration control, testing, release management, and related SCM activities.
+Date: SCM Change Tracking
+Category: SCM
+Description:
+Recorded the major project changes in this Change Log to
+provide configuration and change traceability.
 
-Configuration Item:
-docs/Configuration_Management_Plan.md
-
-Change Type:
-Documentation
-
-Status:
-Completed
-
-SCM Reference:
-Git commit: Add configuration management plan
-
-
-CHG-024
-Date/Period: SCM Documentation
-Change Description:
-Created the Software Requirements Specification containing functional, non-functional, system, database, API, security, and acceptance requirements.
-
-Configuration Item:
-docs/Software_Requirements_Specification.md
-
-Change Type:
-Documentation
-
-Status:
-Completed
-
-SCM Reference:
-Git commit: Add software requirements specification
-
-
-CHG-025
-Date/Period: SCM Documentation
-Change Description:
-Created the System Architecture document describing frontend, backend, database, API, authentication, data flow, security, deployment, and SCM architecture.
-
-Configuration Item:
-docs/System_Architecture.md
-
-Change Type:
-Documentation
-
-Status:
-Completed
-
-SCM Reference:
-Git commit: Add system architecture document
-
-
-CHG-026
-Date/Period: SCM Documentation
-Change Description:
-Created API Documentation covering all implemented REST API endpoints, request formats, response formats, validation, and API testing.
-
-Configuration Item:
-docs/API_Documentation.md
-
-Change Type:
-Documentation
-
-Status:
-Completed
-
-SCM Reference:
-Git commit: Add API documentation
-
-
-CHG-027
-Date/Period: SCM Documentation
-Change Description:
-Created the Test Plan covering test objectives, scope, test environment, test cases, API testing, functional testing, database testing, security validation, defect management, and SCM integration.
-
-Configuration Item:
-docs/Test_Plan.md
-
-Change Type:
-Documentation
-
-Status:
-Completed
-
-SCM Reference:
-Git commit: Add test plan
-
-
-CHG-028
-Date/Period: SCM Documentation
-Change Description:
-Created the Change Log to maintain traceability of major project changes and SCM activities.
-
-Configuration Item:
+File:
 docs/Change_Log.md
 
-Change Type:
-Documentation
-
 Status:
 Completed
 
-SCM Reference:
-Current SCM activity
 
+============================================================
+4. GIT COMMIT AND VERSION CONTROL PRACTICES
+============================================================
 
-5. MAJOR CONFIGURATION ITEMS
+Git was used to maintain version history throughout the
+project.
 
-The following configuration items are maintained under version control:
+Major SCM activities included:
 
-1. Frontend source code
-2. Backend source code
-3. Database models
-4. REST API routes
-5. React pages and components
-6. CSS files
-7. Configuration files
-8. Documentation files
-9. Git configuration and branch history
-10. GitHub Issues
-11. GitHub Project board
-12. GitHub Actions workflow files
-13. Release tags
+- Git repository initialization
+- Remote GitHub repository configuration
+- Development branch creation
+- Feature development
+- Git commits
+- Git pushes
+- GitHub Issues
+- GitHub Projects
+- Documentation version control
+- UI change tracking
 
+Commit messages were written to describe the purpose of
+individual changes.
 
-6. CHANGE MANAGEMENT PROCESS
+Examples of commit messages used:
 
-The project follows the following change management process:
+- Add donor authentication and dashboard navigation
+- Add configuration management plan
+- Add software requirements specification
+- Add system architecture document
+- Add API documentation
+- Add test plan
+- Improve authentication and blood stock page UI
+
+============================================================
+5. CONFIGURATION ITEMS AFFECTED
+============================================================
+
+The following configuration items were modified during
+development:
+
+Frontend:
+- frontend/src/App.jsx
+- frontend/src/pages/Login.jsx
+- frontend/src/pages/Login.css
+- frontend/src/pages/DonorRegistration.jsx
+- frontend/src/pages/DonorRegistration.css
+- frontend/src/pages/BloodStock.jsx
+- frontend/src/pages/BloodStock.css
+- frontend/src/pages/BloodRequest.jsx
+- frontend/src/pages/BloodRequest.css
+- frontend/src/pages/FindDonors.jsx
+- frontend/src/pages/FindDonors.css
+- frontend/src/pages/DonorDashboard.jsx
+- frontend/src/pages/DonorDashboard.css
+
+Backend:
+- backend/server.js
+- backend/models/Donor.js
+- backend/models/BloodStock.js
+- backend/models/BloodRequest.js
+- backend/routes/donorRoutes.js
+- backend/routes/authRoutes.js
+- backend/routes/bloodStockRoutes.js
+- backend/routes/bloodRequestRoutes.js
+
+Documentation:
+- docs/Configuration_Management_Plan.md
+- docs/Software_Requirements_Specification.md
+- docs/System_Architecture.md
+- docs/API_Documentation.md
+- docs/Test_Plan.md
+- docs/Change_Log.md
+
+Configuration:
+- backend/.env
+- backend/.gitignore
+
+============================================================
+6. CURRENT PROJECT STATUS
+============================================================
+
+The following major modules are implemented:
+
+1. SmartBlood homepage
+2. Donor registration
+3. Donor login
+4. Donor dashboard
+5. Logout
+6. Blood stock management
+7. Blood request management
+8. Donor search
+9. MongoDB database integration
+10. Git/GitHub SCM
+11. GitHub Issues
+12. GitHub Project board
+13. SCM documentation
+14. Test Plan
+15. UI enhancements
+
+Current development branch:
+development
+
+Current project stage:
+Functional development and SCM documentation
+
+============================================================
+7. PENDING / FUTURE CHANGES
+============================================================
+
+Potential future enhancements include:
+
+- JWT-based authentication
+- Role-based access control
+- Admin dashboard
+- Password reset
+- Email/SMS notifications
+- Real-time blood stock updates
+- Advanced donor filtering
+- Blood request approval workflow
+- Automated unit and API testing
+- GitHub Actions CI/CD
+- Production deployment
+- Improved database security
+- Automated database backup
+- Release versioning
+
+============================================================
+8. CHANGE CONTROL
+============================================================
+
+All significant project changes should follow the SCM
+workflow:
 
 1. Identify the required change.
 2. Create or update a GitHub Issue when appropriate.
 3. Implement the change in the development branch.
 4. Test the change locally.
-5. Review the modified configuration items.
-6. Commit the change using a meaningful Git commit message.
-7. Push the commit to the GitHub development branch.
-8. Update relevant documentation.
-9. Update the GitHub Issue and Project board.
-10. Merge stable changes to the main branch when approved.
+5. Review modified files.
+6. Commit the change with a meaningful commit message.
+7. Push the changes to GitHub.
+8. Update project documentation when required.
+9. Update the GitHub Project board.
+10. Include the change in this Change Log.
 
+============================================================
+9. DOCUMENT CONTROL
+============================================================
 
-7. VERSION CONTROL POLICY
-
-Git is used as the version control system for the project.
-
-The main branch represents the stable project version.
-
-The development branch is used for ongoing implementation and testing.
-
-Meaningful commit messages are used to describe project changes.
-
-Sensitive configuration files such as .env are excluded from version control.
-
-
-8. TRACEABILITY
-
-Changes are traceable through:
-
-- Git commits
-- Git branches
-- GitHub Issues
-- GitHub Project board
-- Documentation change history
-- GitHub Actions workflow history
-- Release tags
-
-
-9. FUTURE CHANGE ENTRIES
-
-Future changes shall be added using the following format:
-
-Change ID:
-Date/Period:
-Change Description:
-Configuration Item:
-Change Type:
-Status:
-SCM Reference:
-
-
-10. DOCUMENT CONTROL
-
-Document Name:
+Document:
 Change Log
 
-Current Version:
-1.0
+File:
+docs/Change_Log.md
+
+Version:
+1.0.0
 
 Status:
 Active
 
-Maintained By:
-Project Development Team
+Purpose:
+Track project changes and maintain SCM traceability.
 
-Version Control:
-Git and GitHub
+============================================================
+10. CONCLUSION
+============================================================
 
-Branch:
-development
+This Change Log provides a chronological record of the major
+changes made to the Smart Blood Donor Management System.
 
+It supports Software Configuration Management by maintaining
+traceability between implementation changes, documentation,
+Git commits, GitHub Issues, project tasks, and configuration
+items.
 
-11. CONCLUSION
-
-The Change Log provides a centralized record of significant modifications made to the Smart Blood Donor Management System.
-
-It supports configuration identification, change tracking, traceability, accountability, and project auditing as part of the Software Configuration Management process.
-
-The document will be updated whenever a significant project configuration item is added, modified, removed, or released.
+Future changes to the project should be recorded using the
+same change control and version management practices.

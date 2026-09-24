@@ -1,12 +1,26 @@
 # Smart Blood Donor Management System
 
+## Software Configuration Management Project
+
+A web-based Smart Blood Donor Management System developed to manage blood donors, blood stock, blood requests, and donor search operations. The project also demonstrates Software Configuration Management (SCM) practices using Git, GitHub, GitHub Issues, GitHub Projects, GitHub Actions, branches, commits, and release tags.
+
+---
+
 ## 1. Project Overview
 
-The Smart Blood Donor Management System is a web-based application developed to simplify blood donor registration, donor searching, blood stock management, and blood request management.
+The Smart Blood Donor Management System is designed to provide a centralized platform for managing blood donation and blood requirement information.
 
-The system provides a centralized platform where donors can register, log in, view their dashboard, and where users can search for donors, view available blood stock, and submit blood requests.
+The system allows users to:
 
-The project is also developed as a Software Configuration Management (SCM) project. Git and GitHub are used to manage source code, documentation, issues, branches, project tracking, and future automated builds and tests.
+- Register as blood donors
+- Login securely using registered credentials
+- View a personalized donor dashboard
+- Search for donors based on blood group and city
+- View available blood stock
+- Update blood stock information
+- Submit blood requests
+- View submitted blood requests
+- Manage project changes using SCM practices
 
 ---
 
@@ -14,102 +28,60 @@ The project is also developed as a Software Configuration Management (SCM) proje
 
 The main objectives of the project are:
 
-- Provide an easy donor registration system.
-- Maintain donor information securely.
-- Provide donor login and dashboard functionality.
-- Allow users to search donors based on blood group and city.
-- Maintain available blood stock information.
-- Allow users to submit blood requests.
-- Store project data in MongoDB.
-- Provide REST APIs for communication between frontend and backend.
-- Apply Software Configuration Management practices throughout development.
-- Maintain traceability of project changes using Git and GitHub.
+1. Develop a functional web-based blood donor management system.
+2. Maintain donor information in a centralized database.
+3. Provide blood stock management functionality.
+4. Allow users to submit blood requests.
+5. Provide donor search functionality.
+6. Apply Software Configuration Management principles throughout development.
+7. Maintain project versions using Git and GitHub.
+8. Track project changes using GitHub Issues and GitHub Projects.
+9. Maintain project documentation as controlled configuration items.
+10. Automate build and testing activities using GitHub Actions.
 
 ---
 
-## 3. Main Features
+## 3. Key Features
 
-### 3.1 Donor Registration
+### Donor Management
 
-Donors can create an account by entering:
+- Donor registration
+- Donor login
+- Password hashing using bcrypt
+- Donor dashboard
+- Donor logout
+- Donor search by blood group
+- Donor search by city
 
-- Full Name
-- Email
-- Phone Number
-- Date of Birth
-- Gender
-- Blood Group
-- City
-- Address
-- Last Donation Date
-- Password
+### Blood Stock Management
 
-Passwords are hashed using bcryptjs before being stored in the database.
+- View blood stock
+- Add or update blood stock
+- Display availability status
+- Display low-stock status
+- Display out-of-stock status
 
-### 3.2 Donor Login
+### Blood Request Management
 
-Registered donors can log in using their email and password.
+- Submit blood requests
+- Specify patient information
+- Specify required blood group
+- Specify required units
+- Specify hospital and city
+- Select urgency level
+- Store request status
 
-The system validates the credentials through the backend authentication API.
+### User Interface
 
-### 3.3 Donor Dashboard
-
-After successful login, donors can access a dashboard containing:
-
-- Donor name
-- Email
-- Blood group
-- City
-- Quick access to major system modules
-- Logout option
-
-### 3.4 Blood Stock Management
-
-The system maintains blood stock for the following blood groups:
-
-- A+
-- A-
-- B+
-- B-
-- AB+
-- AB-
-- O+
-- O-
-
-Users can view available units and update stock through the application.
-
-### 3.5 Blood Request Management
-
-Users can submit blood requests containing:
-
-- Patient Name
-- Phone Number
-- Blood Group
-- Units Required
-- Hospital
-- City
-- Urgency
-
-Request urgency can be:
-
-- Normal
-- Urgent
-- Emergency
-
-Requests are stored in MongoDB with a default Pending status.
-
-### 3.6 Donor Search
-
-Users can search for donors using:
-
-- Blood Group
-- City
-
-The backend returns matching donors with relevant contact information.
-
-### 3.7 Logout
-
-Logged-in donors can securely log out from the application by clearing the stored donor session information.
+- Responsive React interface
+- Navigation between system modules
+- Home page
+- Donor registration page
+- Login page
+- Dashboard
+- Blood stock page
+- Blood request page
+- Donor search page
 
 ---
 
@@ -120,25 +92,24 @@ Logged-in donors can securely log out from the application by clearing the store
 - React
 - Vite
 - JavaScript
-- React Router
 - CSS
-- HTML
+- React Router
 
 ### Backend
 
 - Node.js
 - Express.js
-- REST API
+- REST APIs
+- Mongoose
+- bcryptjs
+- CORS
+- dotenv
 
 ### Database
 
 - MongoDB Atlas
-- Mongoose
-
-### Authentication and Security
-
-- bcryptjs
-- Environment variables using dotenv
+- MongoDB
+- Mongoose ODM
 
 ### Software Configuration Management
 
@@ -146,16 +117,17 @@ Logged-in donors can securely log out from the application by clearing the store
 - GitHub
 - GitHub Issues
 - GitHub Projects
+- GitHub Actions
 - Git branches
 - Git tags
-- GitHub Actions
 
 ### Development Tools
 
 - Visual Studio Code
 - Node.js
 - npm
-- Git Bash / VS Code Terminal
+- Git Bash / Command Prompt
+- Web browser
 
 ---
 
@@ -164,31 +136,29 @@ Logged-in donors can securely log out from the application by clearing the store
 The system follows a client-server architecture.
 
 ```text
-                    SMART BLOOD DONOR MANAGEMENT SYSTEM
-
-                              ┌───────────────┐
-                              │     Users     │
-                              └───────┬───────┘
-                                      │
-                                      ▼
-                         ┌─────────────────────┐
-                         │   React Frontend    │
-                         │      Vite           │
-                         └──────────┬──────────┘
-                                    │
-                              HTTP / REST API
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │   Express Backend   │
-                         │      Node.js        │
-                         └──────────┬──────────┘
-                                    │
-                                    ▼
-                         ┌─────────────────────┐
-                         │    MongoDB Atlas    │
-                         │       Database      │
-                         └─────────────────────┘
++---------------------------+
+|       User / Browser      |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|     React Frontend        |
+|        + Vite             |
++-------------+-------------+
+              |
+              | REST API / HTTP
+              v
++---------------------------+
+|    Node.js + Express      |
+|        Backend            |
++-------------+-------------+
+              |
+              | Mongoose
+              v
++---------------------------+
+|       MongoDB Atlas       |
+|         Database          |
++---------------------------+
 ```
 
 ---
@@ -201,36 +171,38 @@ Smart Blood Donor Management
 ├── frontend
 │   ├── src
 │   │   ├── pages
-│   │   │   ├── DonorRegistration.jsx
 │   │   │   ├── Login.jsx
+│   │   │   ├── Login.css
+│   │   │   ├── DonorRegistration.jsx
+│   │   │   ├── DonorRegistration.css
+│   │   │   ├── DonorDashboard.jsx
+│   │   │   ├── DonorDashboard.css
 │   │   │   ├── BloodStock.jsx
+│   │   │   ├── BloodStock.css
 │   │   │   ├── BloodRequest.jsx
+│   │   │   ├── BloodRequest.css
 │   │   │   ├── FindDonors.jsx
-│   │   │   └── DonorDashboard.jsx
-│   │   │
+│   │   │   └── FindDonors.css
 │   │   ├── App.jsx
 │   │   ├── App.css
 │   │   └── main.jsx
-│   │
 │   ├── package.json
-│   └── package-lock.json
+│   └── ...
 │
 ├── backend
 │   ├── models
 │   │   ├── Donor.js
 │   │   ├── BloodStock.js
 │   │   └── BloodRequest.js
-│   │
 │   ├── routes
 │   │   ├── donorRoutes.js
 │   │   ├── authRoutes.js
 │   │   ├── bloodStockRoutes.js
 │   │   └── bloodRequestRoutes.js
-│   │
-│   ├── .env
-│   ├── .gitignore
+│   ├── server.js
 │   ├── package.json
-│   └── server.js
+│   ├── .env
+│   └── .gitignore
 │
 ├── docs
 │   ├── Configuration_Management_Plan.md
@@ -243,30 +215,41 @@ Smart Blood Donor Management
 └── README.md
 ```
 
-Note: The `.env` file is intentionally excluded from Git version control because it contains sensitive configuration information.
+---
+
+## 7. Backend API Endpoints
+
+| Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/api/donors/register` | Register a new donor |
+| POST | `/api/auth/login` | Authenticate a donor |
+| GET | `/api/donors` | Search and retrieve donors |
+| GET | `/api/blood-stock` | Retrieve blood stock |
+| POST | `/api/blood-stock` | Add or update blood stock |
+| POST | `/api/blood-requests` | Create a blood request |
+| GET | `/api/blood-requests` | Retrieve blood requests |
+
+For detailed API information, refer to:
+
+`docs/API_Documentation.md`
 
 ---
 
-## 7. Prerequisites
+## 8. Prerequisites
 
-Before running the project, install:
+Install the following before running the project:
 
-1. Node.js
-2. npm
-3. Git
-4. MongoDB Atlas account
-5. Visual Studio Code
+- Node.js
+- npm
+- Git
+- MongoDB Atlas account
+- Visual Studio Code or another code editor
 
-Verify Node.js:
-
-```bash
-node --version
-```
-
-Verify npm:
+Verify Node.js and npm:
 
 ```bash
-npm --version
+node -v
+npm -v
 ```
 
 Verify Git:
@@ -277,40 +260,12 @@ git --version
 
 ---
 
-## 8. Database Configuration
-
-The project uses MongoDB Atlas.
-
-The backend requires an environment file:
-
-```text
-backend/.env
-```
-
-Example structure:
-
-```text
-MONGO_URI=your_mongodb_connection_string
-PORT=5000
-```
-
-Do not commit the `.env` file to GitHub.
-
-The backend `.gitignore` contains:
-
-```text
-node_modules/
-.env
-```
-
----
-
-## 9. Installation
+## 9. Installation and Setup
 
 ### Step 1: Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone <your-github-repository-url>
 ```
 
 Move into the project directory:
@@ -319,6 +274,8 @@ Move into the project directory:
 cd "Smart Blood Donor Management"
 ```
 
+---
+
 ### Step 2: Install Frontend Dependencies
 
 ```bash
@@ -326,9 +283,11 @@ cd frontend
 npm install
 ```
 
+---
+
 ### Step 3: Install Backend Dependencies
 
-Open another terminal:
+Open another terminal and run:
 
 ```bash
 cd backend
@@ -337,252 +296,159 @@ npm install
 
 ---
 
-## 10. Running the Backend
+### Step 4: Configure Environment Variables
 
-From the backend directory:
+Create a `.env` file inside the `backend` directory.
+
+Example:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+PORT=5000
+```
+
+Do not commit the `.env` file to GitHub.
+
+The `.gitignore` file should contain:
+
+```text
+node_modules/
+.env
+```
+
+---
+
+## 10. Running the Application
+
+### Start the Backend
+
+From the `backend` directory:
 
 ```bash
 npm run dev
 ```
 
-The backend runs at:
+The backend runs on:
 
 ```text
 http://localhost:5000
 ```
 
-The backend connects to MongoDB Atlas when the database configuration is correct.
-
 ---
 
-## 11. Running the Frontend
+### Start the Frontend
 
-From the frontend directory:
+From the `frontend` directory:
 
 ```bash
 npm run dev
 ```
 
-The frontend normally runs at:
+The frontend normally runs on:
 
 ```text
 http://localhost:5173
 ```
 
-Open the displayed URL in a web browser.
+Open the frontend URL in a web browser.
 
 ---
 
-## 12. Application Routes
+## 11. Git Branching Strategy
 
-The frontend currently contains the following routes:
+The project uses Git branches to separate development work from the main branch.
 
-| Route | Purpose |
-|---|---|
-| `/` | Home page |
-| `/register` | Donor registration |
-| `/login` | Donor login |
-| `/dashboard` | Donor dashboard |
-| `/blood-stock` | Blood stock management |
-| `/request-blood` | Blood request form |
-| `/find-donors` | Donor search |
-
----
-
-## 13. Backend API Endpoints
-
-### Donor Registration
-
-```text
-POST /api/donors/register
-```
-
-Registers a new donor.
-
-### Donor Search
-
-```text
-GET /api/donors
-```
-
-Supports blood group and city filtering.
-
-Example:
-
-```text
-GET /api/donors?bloodGroup=O%2B&city=Vellore
-```
-
-### Login
-
-```text
-POST /api/auth/login
-```
-
-Authenticates a registered donor.
-
-### Get Blood Stock
-
-```text
-GET /api/blood-stock
-```
-
-Returns available blood stock.
-
-### Update Blood Stock
-
-```text
-POST /api/blood-stock
-```
-
-Creates or updates blood stock.
-
-### Create Blood Request
-
-```text
-POST /api/blood-requests
-```
-
-Creates a new blood request.
-
-### Get Blood Requests
-
-```text
-GET /api/blood-requests
-```
-
-Returns blood requests.
-
-Detailed API information is available in:
-
-```text
-docs/API_Documentation.md
-```
-
----
-
-## 14. Testing
-
-The project includes a dedicated Test Plan.
-
-Testing covers:
-
-- Functional testing
-- Unit-level validation
-- Integration testing
-- API testing
-- UI testing
-- Database testing
-- Regression testing
-- Input validation
-- Error handling
-- Security-related validation
-
-The detailed testing strategy is available in:
-
-```text
-docs/Test_Plan.md
-```
-
----
-
-## 15. Software Configuration Management
-
-SCM is an important part of this project.
-
-The project uses Git and GitHub to control and track project configuration items.
-
-### SCM Practices Used
-
-- Git repository
-- Main branch
-- Development branch
-- Meaningful commit messages
-- GitHub Issues
-- GitHub Projects
-- Configuration Management Plan
-- Software Requirements Specification
-- System Architecture documentation
-- API documentation
-- Test Plan
-- Change Log
-- GitHub Actions
-- Release tags
-
----
-
-## 16. Branching Strategy
-
-The project uses the following branches:
+Current branches include:
 
 ```text
 main
-  │
-  └── Stable project version
-
 development
-  │
-  └── Active development and testing
 ```
 
-Development work is performed in the `development` branch.
+The `development` branch is used for ongoing development and integration.
 
-Stable versions can be merged into the `main` branch after appropriate testing and review.
+The `main` branch represents the stable project baseline.
+
+Example workflow:
+
+```text
+main
+  |
+  +---- development
+          |
+          +---- feature development
+          |
+          +---- testing
+          |
+          +---- release
+```
 
 ---
 
-## 17. Git Workflow
+## 12. Git Workflow
 
-The basic development workflow is:
-
-```text
-Create / Modify Feature
-        ↓
-Test Locally
-        ↓
-Check Git Status
-        ↓
-Stage Changes
-        ↓
-Commit Changes
-        ↓
-Push to Development Branch
-        ↓
-Update GitHub Issue
-        ↓
-Update GitHub Project
-        ↓
-Review / Merge
-```
-
-Typical commands:
+The basic workflow followed in this project is:
 
 ```bash
 git status
 git add .
-git commit -m "Describe the change"
+git commit -m "Meaningful commit message"
 git push origin development
 ```
 
----
+Before making major changes:
 
-## 18. GitHub Issues
-
-The project uses GitHub Issues to track development work.
-
-Current issues include:
-
-- Issue #1 - Implement secure donor authentication
-- Issue #2 - Implement blood stock management
-- Issue #3 - Implement blood request management
-- Issue #4 - Implement donor search
-- Issue #5 - Create SCM project documentation
-
-Issues provide traceability between requirements, development work, and configuration changes.
+1. Check the current branch.
+2. Check the working tree.
+3. Implement the change.
+4. Test the change.
+5. Stage the required files.
+6. Commit the change.
+7. Push the changes to GitHub.
+8. Update the related issue or project board.
 
 ---
 
-## 19. GitHub Project Board
+## 13. Commit Management
+
+Meaningful commit messages are used to describe project changes.
+
+Examples:
+
+```text
+Add donor authentication and dashboard navigation
+Add blood stock management
+Add blood request management
+Add donor search functionality
+Add configuration management plan
+Add software requirements specification
+Add system architecture document
+Add API documentation
+Add test plan
+Add change log
+```
+
+Commits provide a historical record of project development.
+
+---
+
+## 14. GitHub Issues
+
+GitHub Issues are used for tracking project requirements and development tasks.
+
+Issues created for this project include:
+
+- Implement secure donor authentication
+- Implement blood stock management
+- Implement blood request management
+- Implement donor search
+- Create SCM project documentation
+
+Issues help maintain traceability between requirements, implementation, and project changes.
+
+---
+
+## 15. GitHub Project Board
 
 A GitHub Project board named:
 
@@ -600,13 +466,67 @@ In Progress
 Done
 ```
 
-Issues are moved across the board according to their development status.
+Project issues are moved between these columns based on their current development status.
 
 ---
 
-## 20. Project Documentation
+## 16. Software Configuration Management
 
-The `docs` directory contains important project documentation:
+SCM activities followed in this project include:
+
+### Configuration Identification
+
+The following are treated as configuration items:
+
+- Source code
+- Frontend components
+- Backend components
+- Database models
+- API routes
+- Configuration files
+- Documentation
+- Test plans
+- GitHub workflow files
+
+### Version Control
+
+Git is used to maintain versions of project files.
+
+### Change Control
+
+Changes are tracked through:
+
+- GitHub Issues
+- Git commits
+- Pull requests when applicable
+- GitHub Project board
+- Change Log
+
+### Status Accounting
+
+Project status is maintained using:
+
+- Git history
+- GitHub Issues
+- GitHub Projects
+- Change Log
+- Documentation
+
+### Configuration Auditing
+
+The repository is periodically checked to verify that:
+
+- Required files are present.
+- Configuration files are correctly maintained.
+- Sensitive files are excluded.
+- Documentation matches the implementation.
+- Changes are committed and pushed.
+
+---
+
+## 17. Project Documentation
+
+The `docs` directory contains the major SCM and project documents.
 
 ### Configuration Management Plan
 
@@ -614,7 +534,7 @@ The `docs` directory contains important project documentation:
 docs/Configuration_Management_Plan.md
 ```
 
-Defines the SCM strategy and configuration management process.
+Defines the SCM process, roles, configuration items, version control, change control, and release management.
 
 ### Software Requirements Specification
 
@@ -622,7 +542,7 @@ Defines the SCM strategy and configuration management process.
 docs/Software_Requirements_Specification.md
 ```
 
-Defines system requirements and acceptance criteria.
+Defines system requirements, functional requirements, non-functional requirements, constraints, and acceptance criteria.
 
 ### System Architecture
 
@@ -630,7 +550,7 @@ Defines system requirements and acceptance criteria.
 docs/System_Architecture.md
 ```
 
-Describes the system architecture and component interaction.
+Describes the system architecture, components, database, APIs, communication, and SCM architecture.
 
 ### API Documentation
 
@@ -638,7 +558,7 @@ Describes the system architecture and component interaction.
 docs/API_Documentation.md
 ```
 
-Documents backend REST APIs.
+Describes the REST API endpoints, requests, responses, validation, and API testing.
 
 ### Test Plan
 
@@ -646,7 +566,7 @@ Documents backend REST APIs.
 docs/Test_Plan.md
 ```
 
-Defines testing strategy and test cases.
+Defines the testing strategy, test cases, test environment, test execution process, and completion criteria.
 
 ### Change Log
 
@@ -654,215 +574,179 @@ Defines testing strategy and test cases.
 docs/Change_Log.md
 ```
 
-Records significant project changes and configuration updates.
+Maintains the history of important project changes and configuration updates.
 
 ---
 
-## 21. Security Considerations
+## 18. Testing
 
-The project includes the following security measures:
+Testing is performed at multiple levels:
+
+- Unit testing
+- Integration testing
+- Functional testing
+- API testing
+- UI testing
+- Database testing
+- Regression testing
+- Validation and error handling testing
+
+The main test cases are maintained in:
+
+```text
+docs/Test_Plan.md
+```
+
+---
+
+## 19. Security Considerations
+
+The project includes basic security practices such as:
 
 - Password hashing using bcryptjs
-- Environment variables for database configuration
+- Environment variables for database credentials
 - `.env` excluded from Git
-- Backend validation
-- Frontend required-field validation
-- Password fields are not returned in login responses
-- Database access controlled through MongoDB Atlas configuration
+- Input validation
+- API error handling
+- Passwords excluded from login responses
 
-JWT-based authentication and stronger authorization mechanisms can be added as future enhancements.
-
----
-
-## 22. Error Handling
-
-The system handles common errors such as:
-
-- Duplicate donor email
-- Invalid login credentials
-- Missing required fields
-- Invalid blood group
-- Invalid blood request values
-- Backend connection failures
-- Database connection failures
-- API request failures
-
-Appropriate response messages are returned by the backend APIs.
-
----
-
-## 23. Current Development Status
-
-The following major modules have been implemented:
-
-- Project structure
-- React frontend
-- Express backend
-- MongoDB Atlas integration
-- Donor registration
-- Password hashing
-- Donor login
-- Donor dashboard
-- Logout
-- Blood stock management
-- Blood request management
-- Donor search
-- REST API documentation
-- System architecture documentation
-- Software requirements specification
-- Configuration management plan
-- Test plan
-- Change log
-- GitHub Issues
-- GitHub Project board
-- Development branch
-
----
-
-## 24. Future Enhancements
-
-Possible future enhancements include:
+Future versions can introduce:
 
 - JWT-based authentication
 - Role-based access control
+- Secure HTTP headers
+- Rate limiting
+- Improved session management
+- Stronger validation
+
+---
+
+## 20. Current Development Status
+
+The following major modules have been implemented:
+
+- Project initialization
+- React frontend
+- Node.js backend
+- MongoDB Atlas integration
+- Donor registration
+- Secure password hashing
+- Donor login
+- Donor dashboard
+- Blood stock management
+- Blood request management
+- Donor search
+- React routing
+- Responsive UI improvements
+- SCM documentation
+- GitHub Issues
+- GitHub Project board
+- Git-based version control
+
+The project is currently maintained on the `development` branch.
+
+---
+
+## 21. Future Enhancements
+
+Possible future improvements include:
+
+- JWT authentication
 - Admin dashboard
-- Donor availability status
-- Email notifications
-- SMS notifications
-- Emergency donor alerts
+- Donor availability tracking
+- Email/SMS notifications
 - Blood request approval workflow
-- Automatic blood stock updates
+- Automatic blood stock deduction
+- Location-based donor search
 - Blood donation history
-- Donor eligibility verification
-- Location-based donor matching
-- Advanced search and filtering
-- Cloud deployment
-- Automated testing
-- Continuous Integration and Continuous Deployment
+- Appointment scheduling
+- Advanced analytics dashboard
+- Automated deployment
+- Additional automated tests
 
 ---
 
-## 25. Limitations
+## 22. Release Management
 
-The current implementation is a student project prototype.
+The project uses Git tags to identify stable releases.
 
-Some information displayed in the interface may represent sample or demonstration data.
-
-The current authentication implementation uses local browser storage for the logged-in donor session and is not intended to represent production-grade authentication.
-
-Production deployment would require additional security controls, authorization, monitoring, validation, and privacy protections.
-
----
-
-## 26. SCM Configuration Items
-
-The major configuration items include:
-
-```text
-CI-01  Frontend Source Code
-CI-02  Backend Source Code
-CI-03  Database Models
-CI-04  API Routes
-CI-05  UI Components
-CI-06  CSS Files
-CI-07  Configuration Files
-CI-08  Documentation
-CI-09  Git Repository
-CI-10  GitHub Issues
-CI-11  GitHub Project
-CI-12  GitHub Actions Workflow
-CI-13  Release Tags
-```
-
----
-
-## 27. Repository
-
-GitHub repository:
-
-```text
-smart-blood-donor-management
-```
-
-The repository contains the source code, documentation, configuration files, and SCM history of the project.
-
----
-
-## 28. Project Team
-
-Project:
-
-Smart Blood Donor Management System
-
-Academic Context:
-
-Software Configuration Management
-
-Development Environment:
-
-Visual Studio Code
-
-Version Control:
-
-Git
-
-Repository Hosting:
-
-GitHub
-
-Database:
-
-MongoDB Atlas
-
----
-
-## 29. Version Information
-
-Current project version:
-
-```text
-Development Version
-```
-
-Development branch:
-
-```text
-development
-```
-
-Stable releases will be identified using Git tags.
-
-Example:
+The planned first release baseline is:
 
 ```text
 v1.0.0
 ```
 
----
-
-## 30. Contribution Workflow
-
-For any future modification:
-
-1. Identify the required change.
-2. Create or update a GitHub Issue.
-3. Modify the required configuration item.
-4. Test the change.
-5. Review the changes using `git status`.
-6. Stage the changes.
-7. Commit using a meaningful message.
-8. Push to the development branch.
-9. Update the related GitHub Issue.
-10. Update the GitHub Project board.
-11. Update documentation if required.
-12. Merge the stable change into the main branch after review.
+Release tags provide a fixed reference point for project versions.
 
 ---
 
-## 31. Conclusion
+## 23. GitHub Actions
 
-The Smart Blood Donor Management System provides a centralized web-based solution for donor management, blood stock management, donor searching, and blood request management.
+GitHub Actions is planned for continuous integration.
 
-The project also demonstrates practical Software Configuration Management by using Git, GitHub, branches, commits, issues, project boards, documentation, testing, and automated workflow support.
+The CI workflow will be used to:
 
-The README serves as the primary entry point for understanding, installing, running, testing, and maintaining the project.
+- Install dependencies
+- Build the frontend
+- Validate the project
+- Run automated checks
+- Detect integration problems
+
+The workflow will be maintained under:
+
+```text
+.github/workflows/
+```
+
+---
+
+## 24. Repository Management
+
+The GitHub repository contains:
+
+```text
+Source Code
+Documentation
+Configuration Files
+Test Documentation
+SCM Artifacts
+GitHub Workflow Files
+```
+
+Sensitive configuration such as database credentials must not be committed to the repository.
+
+---
+
+## 25. Project Team
+
+**Project:** Smart Blood Donor Management System
+
+**Academic Area:** Software Configuration Management
+
+**Student:** Thilak
+
+**Program:** Integrated M.Tech Software Engineering
+
+**Year:** 3rd Year
+
+---
+
+## 26. Conclusion
+
+The Smart Blood Donor Management System demonstrates the development and management of a web-based application while applying Software Configuration Management principles.
+
+The project uses Git and GitHub for version control, GitHub Issues for change and task tracking, GitHub Projects for progress management, structured documentation for configuration control, and GitHub Actions for continuous integration.
+
+The combination of application development and SCM practices provides a controlled and traceable software development process.
+
+---
+
+## 27. Version Information
+
+```text
+Project: Smart Blood Donor Management System
+SCM Baseline: Version 1.0.0
+Current Development Branch: development
+Repository: smart-blood-donor-management
+Status: Development
+```

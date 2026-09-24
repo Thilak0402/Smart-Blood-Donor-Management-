@@ -1,0 +1,61 @@
+.blood-stock-page {
+  min-height: 100vh;
+  padding: 60px 8%;
+  background: #f8f9fa;
+  text-align: center;
+}
+
+.blood-stock-page h1 {
+  margin-bottom: 10px;
+}
+
+.blood-stock-page > p {
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.blood-stock-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.stock-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.blood-group {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.stock-card h2 {
+  font-size: 32px;
+  margin: 10px 0;
+}
+
+.stock-card p {
+  color: #666;
+}
+
+.stock-card small {
+  color: #888;
+}
+
+@media (max-width: 800px) {
+  .blood-stock-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .blood-stock-grid {
+    grid-template-columns: 1fr;
+  }
+}

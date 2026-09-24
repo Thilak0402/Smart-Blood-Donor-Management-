@@ -1,0 +1,104 @@
+.find-donors-page {
+  min-height: 100vh;
+  padding: 50px 20px;
+  background: #f7f8fc;
+}
+
+.find-donors-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.find-donors-container h1 {
+  text-align: center;
+  color: #b91c1c;
+  margin-bottom: 10px;
+}
+
+.find-donors-container > p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.donor-search-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 15px;
+  align-items: end;
+  margin-bottom: 35px;
+}
+
+.donor-search-form label {
+  font-weight: 600;
+  color: #333;
+}
+
+.donor-search-form input,
+.donor-search-form select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.donor-search-form button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #dc2626;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.donor-search-form button:hover {
+  background: #b91c1c;
+}
+
+.donor-results {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.donor-card {
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.donor-card h2 {
+  color: #b91c1c;
+  margin-bottom: 15px;
+}
+
+.donor-card p {
+  margin: 8px 0;
+  color: #444;
+}
+
+.no-donors {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #777;
+}
+
+@media (max-width: 700px) {
+  .donor-search-form {
+    grid-template-columns: 1fr;
+  }
+
+  .donor-results {
+    grid-template-columns: 1fr;
+  }
+
+  .find-donors-container {
+    padding: 25px;
+  }
+}

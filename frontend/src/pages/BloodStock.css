@@ -1,61 +1,498 @@
 .blood-stock-page {
   min-height: 100vh;
-  padding: 60px 8%;
-  background: #f8f9fa;
-  text-align: center;
+  width: 100%;
+
+  padding: 60px 30px 80px;
+
+  background: linear-gradient(
+    135deg,
+    #fff5f5 0%,
+    #ffffff 50%,
+    #fff0f0 100%
+  );
+
+  box-sizing: border-box;
 }
 
-.blood-stock-page h1 {
-  margin-bottom: 10px;
-}
+.blood-stock-container {
+  width: 100%;
+  max-width: 1200px;
 
-.blood-stock-page > p {
-  color: #666;
-  margin-bottom: 40px;
-}
-
-.blood-stock-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-  max-width: 1000px;
   margin: 0 auto;
 }
 
-.stock-card {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+/* =========================
+   HEADER
+========================= */
+
+.blood-stock-header {
+  text-align: center;
+
+  margin-bottom: 40px;
 }
 
-.blood-group {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 15px;
+.blood-stock-icon {
+  width: 72px;
+  height: 72px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffe5e5;
+
+  border-radius: 50%;
+
+  font-size: 34px;
 }
 
-.stock-card h2 {
-  font-size: 32px;
-  margin: 10px 0;
+.blood-stock-header h1 {
+  margin: 0 0 12px;
+
+  color: #b91c1c;
+
+  font-size: 38px;
+  font-weight: 700;
+
+  line-height: 1.2;
 }
 
-.stock-card p {
-  color: #666;
+.blood-stock-header p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 16px;
+
+  line-height: 1.6;
 }
 
-.stock-card small {
-  color: #888;
+/* =========================
+   UPDATE STOCK CARD
+========================= */
+
+.stock-update-card {
+  width: 100%;
+
+  margin-bottom: 45px;
+
+  padding: 30px 35px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.07);
+
+  box-sizing: border-box;
 }
 
-@media (max-width: 800px) {
+.stock-update-card h2 {
+  margin: 0 0 25px;
+
+  color: #1f2937;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* =========================
+   UPDATE FORM
+========================= */
+
+.stock-update-form {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr auto;
+
+  align-items: end;
+
+  gap: 22px;
+}
+
+.stock-form-group {
+  width: 100%;
+}
+
+.stock-form-group label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #1f2937;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.stock-form-group select,
+.stock-form-group input {
+  width: 100%;
+
+  height: 50px;
+
+  padding: 0 15px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #111827;
+
+  font-family: inherit;
+
+  font-size: 15px;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.stock-form-group select {
+  cursor: pointer;
+}
+
+.stock-form-group input::placeholder {
+  color: #9ca3af;
+}
+
+.stock-form-group select:focus,
+.stock-form-group input:focus {
+  border-color: #dc2626;
+
+  box-shadow:
+    0 0 0 3px rgba(220, 38, 38, 0.10);
+}
+
+/* =========================
+   UPDATE BUTTON
+========================= */
+
+.stock-update-button {
+  height: 50px;
+
+  padding: 0 28px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #dc2626;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.stock-update-button:hover {
+  background: #b91c1c;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 15px rgba(185, 28, 28, 0.20);
+}
+
+.stock-update-button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   STOCK SECTION
+========================= */
+
+.stock-section {
+  width: 100%;
+}
+
+.stock-section-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+.stock-section-header h2 {
+  margin: 0;
+
+  color: #1f2937;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.stock-count {
+  padding: 7px 13px;
+
+  background: #ffe5e5;
+
+  color: #b91c1c;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =========================
+   BLOOD STOCK GRID
+========================= */
+
+.blood-stock-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 24px;
+}
+
+/* =========================
+   BLOOD STOCK CARD
+========================= */
+
+.blood-stock-card {
+  min-height: 245px;
+
+  padding: 28px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.07);
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.blood-stock-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.10);
+}
+
+/* =========================
+   BLOOD GROUP CIRCLE
+========================= */
+
+.blood-group-circle {
+  width: 64px;
+  height: 64px;
+
+  margin-bottom: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #dc2626;
+
+  color: #ffffff;
+
+  border-radius: 50%;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  box-shadow:
+    0 5px 15px rgba(220, 38, 38, 0.20);
+}
+
+.blood-stock-card h3 {
+  margin: 0 0 8px;
+
+  color: #374151;
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.units-number {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  line-height: 1.2;
+}
+
+.units-label {
+  margin: 5px 0 13px;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+/* =========================
+   STOCK STATUS
+========================= */
+
+.stock-status {
+  padding: 6px 13px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.stock-status.available {
+  background: #dcfce7;
+
+  color: #166534;
+}
+
+.stock-status.low-stock {
+  background: #fef3c7;
+
+  color: #92400e;
+}
+
+.stock-status.out-of-stock {
+  background: #fee2e2;
+
+  color: #991b1b;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 950px) {
   .blood-stock-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .stock-update-form {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .stock-update-button {
+    width: 100%;
   }
 }
 
-@media (max-width: 500px) {
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+  .blood-stock-page {
+    padding: 40px 18px 60px;
+  }
+
+  .blood-stock-header {
+    margin-bottom: 30px;
+  }
+
+  .blood-stock-header h1 {
+    font-size: 30px;
+  }
+
+  .blood-stock-header p {
+    font-size: 14px;
+  }
+
+  .stock-update-card {
+    padding: 25px 22px;
+
+    margin-bottom: 35px;
+  }
+
+  .stock-update-card h2 {
+    font-size: 20px;
+  }
+
+  .stock-update-form {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .stock-section-header {
+    align-items: flex-start;
+
+    gap: 12px;
+  }
+
+  .stock-section-header h2 {
+    font-size: 22px;
+  }
+
   .blood-stock-grid {
     grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .blood-stock-card {
+    min-height: 220px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 420px) {
+  .blood-stock-page {
+    padding: 30px 12px 50px;
+  }
+
+  .stock-update-card {
+    padding: 22px 18px;
+  }
+
+  .blood-stock-header h1 {
+    font-size: 27px;
+  }
+
+  .stock-section-header {
+    flex-direction: column;
   }
 }

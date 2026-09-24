@@ -32,7 +32,6 @@ function Login() {
         return;
       }
 
-      // Save logged-in donor information
       localStorage.setItem(
         "donor",
         JSON.stringify(data.donor)
@@ -40,7 +39,6 @@ function Login() {
 
       alert("Login successful!");
 
-      // Go to donor dashboard
       navigate("/dashboard");
     } catch (error) {
       console.error("Login error:", error);
@@ -50,45 +48,82 @@ function Login() {
 
   return (
     <div className="login-page">
-      <div className="login-container">
-        <h1>Donor Login</h1>
+      <div className="login-card">
 
-        <p>Login to access your SmartBlood dashboard.</p>
+        <div className="login-header">
+          <div className="login-icon">
+            🩸
+          </div>
 
-        <form onSubmit={handleSubmit}>
-          <label>Email</label>
+          <h1>Donor Login</h1>
 
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            required
-          />
+          <p>
+            Login to access your SmartBlood dashboard.
+          </p>
+        </div>
 
-          <label>Password</label>
+        <form
+          className="login-form"
+          onSubmit={handleSubmit}
+        >
+          <div className="form-group">
+            <label htmlFor="email">
+              Email Address
+            </label>
 
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            required
-          />
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) =>
+                setEmail(e.target.value)
+              }
+              placeholder="Enter your email"
+              required
+            />
+          </div>
 
-          <button type="submit">
+          <div className="form-group">
+            <label htmlFor="password">
+              Password
+            </label>
+
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) =>
+                setPassword(e.target.value)
+              }
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="login-button"
+          >
             Login
           </button>
         </form>
 
         <div className="login-register">
           <p>
-            Don't have an account?{" "}
-            <Link to="/register">
-              Register as a Donor
-            </Link>
+            Don't have an account?
           </p>
+
+          <Link to="/register">
+            Register as a Donor
+          </Link>
         </div>
+
+        <div className="back-home">
+          <Link to="/">
+            ← Back to Home
+          </Link>
+        </div>
+
       </div>
     </div>
   );

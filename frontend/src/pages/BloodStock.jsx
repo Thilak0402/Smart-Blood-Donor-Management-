@@ -6,13 +6,32 @@ function BloodStock() {
   const [bloodGroup, setBloodGroup] = useState("A+");
   const [unitsAvailable, setUnitsAvailable] = useState("");
 
+  const bloodGroups = [
+    "A+",
+    "A-",
+    "B+",
+    "B-",
+    "AB+",
+    "AB-",
+    "O+",
+    "O-",
+  ];
+
   const fetchBloodStock = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/blood-stock");
+      const response = await fetch(
+        "http://localhost:5000/api/blood-stock"
+      );
+
       const data = await response.json();
-      setBloodStock(data);
+
+      if (response.ok) {
+        setBloodStock(data);
+      } else {
+        console.error("Failed to fetch blood stock");
+      }
     } catch (error) {
-      console.error("Error fetching blood stock:", error);
+      console.error("Blood stock error:", error);
     }
   };
 
@@ -20,8 +39,13 @@ function BloodStock() {
     fetchBloodStock();
   }, []);
 
-  const handleSubmit = async (e) => {
+  const handleUpdateStock = async (e) => {
     e.preventDefault();
+
+    if (unitsAvailable === "" || Number(unitsAvailable) < 0) {
+      alert("Please enter a valid number of units.");
+      return;
+    }
 
     try {
       const response = await fetch(
@@ -48,55 +72,138 @@ function BloodStock() {
       alert("Blood stock updated successfully!");
 
       setUnitsAvailable("");
+
       fetchBloodStock();
     } catch (error) {
-      console.error("Error updating blood stock:", error);
+      console.error("Update stock error:", error);
       alert("Unable to connect to backend");
     }
   };
 
   return (
     <div className="blood-stock-page">
-      <h1>Blood Stock Management</h1>
+      <div className="blood-stock-container">
 
-      <form className="stock-form" onSubmit={handleSubmit}>
-        <select
-          value={bloodGroup}
-          onChange={(e) => setBloodGroup(e.target.value)}
-        >
-          <option>A+</option>
-          <option>A-</option>
-          <option>B+</option>
-          <option>B-</option>
-          <option>AB+</option>
-          <option>AB-</option>
-          <option>O+</option>
-          <option>O-</option>
-        </select>
+        <div className="blood-stock-header">
+          <div className="blood-stock-icon">
+            🩸
+          </div>
 
-        <input
-          type="number"
-          min="0"
-          placeholder="Units Available"
-          value={unitsAvailable}
-          onChange={(e) => setUnitsAvailable(e.target.value)}
-          required
-        />
+          <h1>Blood Stock Management</h1>
 
-        <button type="submit">Update Stock</button>
-      </form>
+          <p>
+            View and manage the available blood stock.
+          </p>
+        </div>
 
-      <div className="blood-stock-grid">
-        {bloodStock.length === 0 ? (
-          <p>No blood stock data available.</p>
-        ) : (
-          bloodStock.map((stock) => (
-            <div className="blood-card" key={stock._id}>
-              <h2>{stock.bloodGroup}</h2>
-              <p>{stock.unitsAvailable} Units Available</p>
+        <div className="stock-update-card">
+          <h2>Update Blood Stock</h2>
+
+          <form
+            className="stock-update-form"
+            onSubmit={handleUpdateStock}
+          >
+            <div className="stock-form-group">
+              <label htmlFor="bloodGroup">
+                Blood Group
+              </label>
+
+              <select
+                id="bloodGroup"
+                value={bloodGroup}
+                onChange={(e) =>
+                  setBloodGroup(e.target.value)
+                }
+              >
+                {bloodGroups.map((group) => (
+                  <option
+                    key={group}
+                    value={group}
+                  >
+                    {group}
+                  </option>
+                ))}
+              </select>
             </div>
-          ))
-        )}
+
+            <div className="stock-form-group">
+              <label htmlFor="unitsAvailable">
+                Units Available
+              </label>
+
+              <input
+                id="unitsAvailable"
+                type="number"
+                min="0"
+                value={unitsAvailable}
+                onChange={(e) =>
+                  setUnitsAvailable(e.target.value)
+                }
+                placeholder="Enter units"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="stock-update-button"
+            >
+              Update Stock
+            </button>
+          </form>
+        </div>
+
+        <div className="stock-section">
+
+          <div className="stock-section-header">
+            <h2>Available Blood Stock</h2>
+
+            <span className="stock-count">
+              {bloodStock.length} Blood Groups
+            </span>
+          </div>
+
+          <div className="blood-stock-grid">
+            {bloodStock.map((stock) => (
+              <div
+                className="blood-stock-card"
+                key={stock._id || stock.bloodGroup}
+              >
+                <div className="blood-group-circle">
+                  {stock.bloodGroup}
+                </div>
+
+                <h3>{stock.bloodGroup}</h3>
+
+                <p className="units-number">
+                  {stock.unitsAvailable}
+                </p>
+
+                <p className="units-label">
+                  Units Available
+                </p>
+
+                <div
+                  className={`stock-status ${
+                    stock.unitsAvailable === 0
+                      ? "out-of-stock"
+                      : stock.unitsAvailable <= 5
+                      ? "low-stock"
+                      : "available"
+                  }`}
+                >
+                  {stock.unitsAvailable === 0
+                    ? "Out of Stock"
+                    : stock.unitsAvailable <= 5
+                    ? "Low Stock"
+                    : "Available"}
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
       </div>
     </div>
   );
